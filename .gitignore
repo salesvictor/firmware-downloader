@@ -1,3 +1,6 @@
+# Routers
+routers/*
+
 # Compressed files
 *.zip
 *.rar

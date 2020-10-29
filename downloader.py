@@ -24,7 +24,7 @@ for idx, router in enumerate(routers):
     downloads = [_ for _ in downloads if _]
     files = [_[0]['href'] for _ in downloads]
     print(f'Found {len(files)} files\n')
-    os.makedirs(router_name, exist_ok=True)
+    os.makedirs(f'routers/{router_name}', exist_ok=True)
     for idx, file in enumerate(files):
         print(f'Downloading file {idx+1}/{len(files)}')
         link = file.replace(' ', '%20')
