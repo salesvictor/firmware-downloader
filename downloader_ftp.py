@@ -39,8 +39,13 @@ for series, series_facts in ftp.mlsd(facts=['type']):
                         for filename, file_facts in ftp.mlsd(facts=['type']):
                             if file_facts['type'] == 'file':
                                 total_files += 1
+                                filepath = f'{basepath}/{device}/{filename}'
+                                if os.path.exists(filepath):
+                                    print('File already present, skipping')
+                                    continue
+
                                 print(f'Downloading file {total_files}')
-                                with open(f'{basepath}/{device}/{filename}', 'wb') as file:
+                                with open(filepath, 'wb') as file:
                                     ftp.retrbinary(
                                         f'RETR {filename}', file.write)
                         ftp.cwd('..')
